@@ -1,0 +1,8 @@
+../Core/Src/Motor.c:17:6:R_Motor	1
+../Core/Src/Motor.c:22:6:L_Motor	1
+../Core/Src/Motor.c:27:6:Stop	1
+../Core/Src/Motor.c:37:6:Forward	1
+../Core/Src/Motor.c:41:6:Backward	1
+../Core/Src/Motor.c:51:6:Turn_R	1
+../Core/Src/Motor.c:55:6:Turn_L	1
+../Core/Src/Motor.c:59:6:SpeedStatus	2
