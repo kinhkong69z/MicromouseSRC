@@ -15,7 +15,9 @@
 
 extern uint32_t Millis;
 extern uint32_t oldTime;
+extern uint32_t Millis2;
 
 void delay_s(int32_t time);
+void delay_us(int32_t time);
 
 #endif /* INC_TIMER_H_ */

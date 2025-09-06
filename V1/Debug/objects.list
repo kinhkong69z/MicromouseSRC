@@ -2,6 +2,7 @@
 "./Core/Src/PID.o"
 "./Core/Src/Sensor.o"
 "./Core/Src/Timer.o"
+"./Core/Src/buttons.o"
 "./Core/Src/main.o"
 "./Core/Src/stm32f1xx_hal_msp.o"
 "./Core/Src/stm32f1xx_it.o"

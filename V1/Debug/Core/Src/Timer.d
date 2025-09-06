@@ -26,7 +26,8 @@ Core/Src/Timer.o: ../Core/Src/Timer.c ../Core/Inc/Timer.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
- ../Core/Inc/stm32f1xx_it.h ../Core/Inc/Sensor.h
+ ../Core/Inc/stm32f1xx_it.h ../Core/Inc/Sensor.h ../Core/Inc/PID.h \
+ ../Core/Inc/Timer.h ../Core/Inc/Motor.h
 ../Core/Inc/Timer.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
@@ -58,3 +59,6 @@ Core/Src/Timer.o: ../Core/Src/Timer.c ../Core/Inc/Timer.h \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
 ../Core/Inc/stm32f1xx_it.h:
 ../Core/Inc/Sensor.h:
+../Core/Inc/PID.h:
+../Core/Inc/Timer.h:
+../Core/Inc/Motor.h:

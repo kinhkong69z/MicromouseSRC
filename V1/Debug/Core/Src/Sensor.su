@@ -1,3 +1,5 @@
-../Core/Src/Sensor.c:30:6:resetIR	8	static
-../Core/Src/Sensor.c:37:6:resetEN	8	static
-../Core/Src/Sensor.c:45:6:EncoderStatus	4	static
+../Core/Src/Sensor.c:36:6:resetIR	8	static
+../Core/Src/Sensor.c:43:6:resetEN	8	static
+../Core/Src/Sensor.c:60:6:EncoderStatus	4	static
+../Core/Src/Sensor.c:78:6:SensorStatus	16	static
+../Core/Src/Sensor.c:87:6:getIR	40	static

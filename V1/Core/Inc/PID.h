@@ -13,12 +13,16 @@
 #include "stm32f1xx_it.h"
 #include "Sensor.h"
 #include "Timer.h"
+#include "Motor.h"
 
 extern float xKp;
 extern float xKd;
 extern float wKp;
 extern float wKd;
+extern float wPID;
+extern float oldErrorW;
+extern float wall_error;
+extern float Kp_wall;
 
-void PID_x();
-void PID_w();
+void PID();
 #endif /* INC_PID_H_ */

@@ -25,6 +25,7 @@
 #include "Motor.h"
 #include <math.h>
 #include "Timer.h"
+#include "buttons.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -112,7 +113,13 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+//	if(flag1 == 1)
+//	{
+//		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+//		flag1 = 0;
+//		delay_s(1);
+//	}
+//	delay_s(1);
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -168,15 +175,25 @@ int main(void)
 
 	HAL_TIM_Base_Start_IT(&htim4);
 	delay_s(4000);
+	resetEN();
 //	test();
+//	distanceLeft = 13000;
+//	while(distanceLeft > 0)
+//	{
+//		getIR();
+//		Forward();
+//	}
+//	Stop();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	while (1)
 	{
-		L_PWM_F = 700;
-		R_PWM_F = 700;
+//		updateSpeed();
+//		getIR();
+//		Forward();
+
 
     /* USER CODE END WHILE */
 
@@ -629,6 +646,16 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : PB13 PB15 */
+  GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_15;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
 }
@@ -649,9 +676,23 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
+	Millis2++;
 	Millis++;
 	EncoderStatus();
 	SpeedStatus();
+//	updateSpeed();
+//	SensorStatus();
+}
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+    if(GPIO_Pin == GPIO_PIN_15)
+    {
+    	flag1 = 1;
+    }
+    if(GPIO_Pin == GPIO_PIN_13)
+    {
+    	flag2 = 1;
+    }
 }
 /* USER CODE END 4 */
 

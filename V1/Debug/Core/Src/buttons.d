@@ -1,4 +1,4 @@
-Core/Src/Motor.o: ../Core/Src/Motor.c ../Core/Inc/Motor.h \
+Core/Src/buttons.o: ../Core/Src/buttons.c ../Core/Inc/buttons.h \
  ../Core/Inc/main.h ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -28,7 +28,7 @@ Core/Src/Motor.o: ../Core/Src/Motor.c ../Core/Inc/Motor.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  ../Core/Inc/stm32f1xx_it.h ../Core/Inc/Sensor.h ../Core/Inc/PID.h \
  ../Core/Inc/Timer.h ../Core/Inc/Motor.h
-../Core/Inc/Motor.h:
+../Core/Inc/buttons.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:

@@ -9,11 +9,18 @@
 
 float xKp;
 float xKd;
-float wKp;
-float wKd;
+float wKp = 1.06;
+float wKd = 0.9;
+float wPID;
+float oldErrorW = 0;
+float wall_error = 0;
+float Kp_wall = 2;
 
-
-void PID_w()
+void PID()
 {
+	wPID = wErrorLR * wKp + (wErrorLR - oldErrorW) * wKd;
+	wPID += wall_error * Kp_wall;
+	oldErrorW = wErrorLR;
 
 }
+
