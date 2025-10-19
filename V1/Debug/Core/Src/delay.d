@@ -1,5 +1,5 @@
-Core/Src/buttons.o: ../Core/Src/buttons.c ../Core/Inc/buttons.h \
- ../Core/Inc/main.h ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
+Core/Src/delay.o: ../Core/Src/delay.c ../Core/Inc/delay.h \
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h \
@@ -22,14 +22,15 @@ Core/Src/buttons.o: ../Core/Src/buttons.c ../Core/Inc/buttons.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
- ../Core/Inc/stm32f1xx_it.h ../Core/Inc/Sensor.h ../Core/Inc/PID.h \
- ../Core/Inc/Timer.h ../Core/Inc/Motor.h
-../Core/Inc/buttons.h:
-../Core/Inc/main.h:
+ ../Core/Inc/stm32f1xx_it.h ../Core/Inc/Sensor.h ../Core/Inc/main.h \
+ ../Core/Inc/PID.h ../Core/Inc/Motor.h ../Core/Inc/delay.h \
+ ../Core/Inc/Encoder.h ../Core/Inc/mpu6050.h
+../Core/Inc/delay.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:
@@ -53,12 +54,16 @@ Core/Src/buttons.o: ../Core/Src/buttons.c ../Core/Inc/buttons.h \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
 ../Core/Inc/stm32f1xx_it.h:
 ../Core/Inc/Sensor.h:
+../Core/Inc/main.h:
 ../Core/Inc/PID.h:
-../Core/Inc/Timer.h:
 ../Core/Inc/Motor.h:
+../Core/Inc/delay.h:
+../Core/Inc/Encoder.h:
+../Core/Inc/mpu6050.h:

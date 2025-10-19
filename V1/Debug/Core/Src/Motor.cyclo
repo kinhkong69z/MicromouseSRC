@@ -1,10 +1,7 @@
-../Core/Src/Motor.c:25:6:R_Motor	1
-../Core/Src/Motor.c:30:6:L_Motor	1
-../Core/Src/Motor.c:35:6:Stop	1
-../Core/Src/Motor.c:45:6:Forward	1
-../Core/Src/Motor.c:52:6:Backward	1
-../Core/Src/Motor.c:62:6:Turn_R	2
-../Core/Src/Motor.c:72:6:Turn_L	1
-../Core/Src/Motor.c:76:6:SpeedStatus	2
-../Core/Src/Motor.c:90:5:counts_to_mm	1
-../Core/Src/Motor.c:94:6:updateSpeed	1
+../Core/Src/Motor.c:18:6:Motor_Init	1
+../Core/Src/Motor.c:29:6:Set_Motor_speed	14
+../Core/Src/Motor.c:172:6:Motor_stop	1
+../Core/Src/Motor.c:39:6:Move_forward	9
+../Core/Src/Motor.c:115:6:Turn_left90	2
+../Core/Src/Motor.c:142:6:Turn_right90	2
+../Core/Src/Motor.c:177:6:Adjuster	1

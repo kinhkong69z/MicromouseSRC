@@ -1,5 +1,5 @@
-../Core/Src/Sensor.c:36:6:resetIR	1
-../Core/Src/Sensor.c:43:6:resetEN	1
-../Core/Src/Sensor.c:60:6:EncoderStatus	3
-../Core/Src/Sensor.c:78:6:SensorStatus	6
-../Core/Src/Sensor.c:87:6:getIR	17
+../Core/Src/Sensor.c:21:6:IR_init	1
+../Core/Src/Sensor.c:34:6:read_ir_adc	2
+../Core/Src/Sensor.c:66:6:ir_calibration	2
+../Core/Src/Sensor.c:78:6:wall_front_calibration	2
+../Core/Src/Sensor.c:89:9:wall_calibration	5

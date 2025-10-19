@@ -12,41 +12,34 @@
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx_it.h"
 #include "Sensor.h"
-#include "Timer.h"
 #include "PID.h"
+#include "delay.h"
+#include "Encoder.h"
+#include "mpu6050.h"
 
+extern uint8_t mouse_state;
+extern uint32_t prev_time_pid_forward;
+extern uint32_t prev_time_pid_rotation;
+extern int32_t debug_pwm;
 
-#define L_PWM_F TIM1->CCR4
-#define L_PWM_R TIM1->CCR3
-#define R_PWM_F TIM1->CCR2
-#define R_PWM_R TIM1->CCR1
-#define bias 0.5
-#define PULSE_TURN 840
-#define PULSE_MM 0.0763
+typedef struct {
+	TIM_HandleTypeDef *M_TIM1;
+	TIM_HandleTypeDef *M_TIM2;
+	uint16_t m_channel1;
+	uint16_t m_channel2;
+} Motor;
 
-extern float SpeedL;
-extern float SpeedR;
-extern float xErrorLR;
-extern float wErrorLR;
-extern float leftEncoder5ms;
-extern float rightEncoder5ms;
-extern float accX;
-extern float decX;
-extern float accW;
-extern float decW;
-extern float curSpeedX;
-extern float curSpeedW;
-extern int PWM_L;
-extern int PWM_R;
+void Motor_Init(Motor *motor, TIM_HandleTypeDef *tim1, TIM_HandleTypeDef *tim2,
+		uint16_t channel1, uint16_t channel2);
 
-void R_Motor();
-void L_Motor();
-void Stop();
-void Turn_L();
-void Turn_R();
-void Backward();
-void Forward();
-void SpeedStatus();
-int counts_to_mm(float speed);
-void updateSpeed(void);
+void Set_Motor_speed(Motor *motor, int16_t speed);
+void Move_forward(float distance, float speed);
+void Turn_left90();
+void Turn_right90();
+void Motor_stop();
+void Adjuster();
+
+extern Motor motor_left;
+extern Motor motor_right;
+
 #endif /* INC_MOTOR_H_ */

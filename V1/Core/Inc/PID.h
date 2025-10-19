@@ -9,20 +9,29 @@
 #define INC_PID_H_
 
 #include "main.h"
-#include "stm32f1xx_hal.h"
-#include "stm32f1xx_it.h"
+#include "math.h"
 #include "Sensor.h"
-#include "Timer.h"
 #include "Motor.h"
 
-extern float xKp;
-extern float xKd;
-extern float wKp;
-extern float wKd;
-extern float wPID;
-extern float oldErrorW;
-extern float wall_error;
-extern float Kp_wall;
+extern int16_t debug_pid;
 
-void PID();
+typedef struct {
+	float kp;
+	float ki;
+	float kd;
+	float integrator;
+	float prev_error;
+} PID;
+
+void PID_init(PID *pid, float kp, float ki, float kd, float integrator, float prev_error);
+float PID_calc(PID *pid, float set_point, float real_data, uint32_t delta_time);
+void PID_reset(PID *pid);
+
+extern PID pid_forward_left;
+extern PID pid_forward_right;
+extern PID pid_steering;
+extern PID pid_turn_left;
+extern PID pid_turn_right;
+extern PID pid_wall_stable;
+
 #endif /* INC_PID_H_ */

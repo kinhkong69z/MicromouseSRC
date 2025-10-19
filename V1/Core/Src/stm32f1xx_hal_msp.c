@@ -120,7 +120,7 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     hdma_adc1.Init.PeriphInc = DMA_PINC_DISABLE;
     hdma_adc1.Init.MemInc = DMA_MINC_ENABLE;
     hdma_adc1.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
-    hdma_adc1.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
+    hdma_adc1.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
     hdma_adc1.Init.Mode = DMA_CIRCULAR;
     hdma_adc1.Init.Priority = DMA_PRIORITY_LOW;
     if (HAL_DMA_Init(&hdma_adc1) != HAL_OK)
@@ -172,6 +172,72 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
 }
 
 /**
+* @brief I2C MSP Initialization
+* This function configures the hardware resources used in this example
+* @param hi2c: I2C handle pointer
+* @retval None
+*/
+void HAL_I2C_MspInit(I2C_HandleTypeDef* hi2c)
+{
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+  if(hi2c->Instance==I2C2)
+  {
+  /* USER CODE BEGIN I2C2_MspInit 0 */
+
+  /* USER CODE END I2C2_MspInit 0 */
+
+    __HAL_RCC_GPIOB_CLK_ENABLE();
+    /**I2C2 GPIO Configuration
+    PB10     ------> I2C2_SCL
+    PB11     ------> I2C2_SDA
+    */
+    GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_11;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+    /* Peripheral clock enable */
+    __HAL_RCC_I2C2_CLK_ENABLE();
+  /* USER CODE BEGIN I2C2_MspInit 1 */
+
+  /* USER CODE END I2C2_MspInit 1 */
+
+  }
+
+}
+
+/**
+* @brief I2C MSP De-Initialization
+* This function freeze the hardware resources used in this example
+* @param hi2c: I2C handle pointer
+* @retval None
+*/
+void HAL_I2C_MspDeInit(I2C_HandleTypeDef* hi2c)
+{
+  if(hi2c->Instance==I2C2)
+  {
+  /* USER CODE BEGIN I2C2_MspDeInit 0 */
+
+  /* USER CODE END I2C2_MspDeInit 0 */
+    /* Peripheral clock disable */
+    __HAL_RCC_I2C2_CLK_DISABLE();
+
+    /**I2C2 GPIO Configuration
+    PB10     ------> I2C2_SCL
+    PB11     ------> I2C2_SDA
+    */
+    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_10);
+
+    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_11);
+
+  /* USER CODE BEGIN I2C2_MspDeInit 1 */
+
+  /* USER CODE END I2C2_MspDeInit 1 */
+  }
+
+}
+
+/**
 * @brief TIM_Base MSP Initialization
 * This function configures the hardware resources used in this example
 * @param htim_base: TIM_Base handle pointer
@@ -198,7 +264,7 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim_base)
     /* Peripheral clock enable */
     __HAL_RCC_TIM4_CLK_ENABLE();
     /* TIM4 interrupt Init */
-    HAL_NVIC_SetPriority(TIM4_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(TIM4_IRQn, 1, 0);
     HAL_NVIC_EnableIRQ(TIM4_IRQn);
   /* USER CODE BEGIN TIM4_MspInit 1 */
 
