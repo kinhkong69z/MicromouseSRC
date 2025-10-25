@@ -9,10 +9,6 @@
 #define INC_SENSOR_H_
 
 #include "main.h"
-#include "stm32f1xx_hal.h"
-#include  <math.h>
-#include "PID.h"
-#include "delay.h"
 
 #define LF_EM_ON HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
 #define L_EM_ON HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);

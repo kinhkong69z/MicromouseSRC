@@ -1,4 +1,5 @@
-Core/Src/wall.o: ../Core/Src/wall.c ../Core/Inc/wall.h ../Core/Inc/main.h \
+Core/Src/Calculation.o: ../Core/Src/Calculation.c \
+ ../Core/Inc/Calculation.h ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -32,7 +33,7 @@ Core/Src/wall.o: ../Core/Src/wall.c ../Core/Inc/wall.h ../Core/Inc/main.h \
  ../Core/Inc/delay.h ../Core/Inc/Sensor.h ../Core/Inc/mpu6050.h \
  ../Core/Inc/PID.h ../Core/Inc/wall.h ../Core/Inc/flash_store_data.h \
  ../Core/Inc/Calculation.h
-../Core/Inc/wall.h:
+../Core/Inc/Calculation.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:

@@ -11,12 +11,13 @@
 #include "Encoder.h"
 #include "Motor.h"
 #include "delay.h"
+#include "function_c.h"
 
 extern uint16_t SPEED;
 extern uint8_t BTN_STATE1;
 extern uint8_t BTN_STATE2;
 
 void mode();
-
+void mouse_move();
 
 #endif /* INC_MODE_H_ */

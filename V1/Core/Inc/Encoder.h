@@ -9,10 +9,7 @@
 #define INC_ENCODER_H_
 
 #include "main.h"
-#include "stm32f1xx.h"
-#include "stm32f1xx_it.h"
-#include "stm32f1xx_hal.h"
-#include "PID.h"
+
 
 extern int16_t COUNT90;
 extern uint16_t COUNT18cm;

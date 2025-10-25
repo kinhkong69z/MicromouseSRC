@@ -1,0 +1,5 @@
+../Core/Src/function_c.c:12:6:initVector	16	static
+../Core/Src/function_c.c:19:6:resizeVector	8	static
+../Core/Src/function_c.c:24:6:pushBack	16	static
+../Core/Src/function_c.c:31:5:get	8	static
+../Core/Src/function_c.c:38:6:freeVector	8	static

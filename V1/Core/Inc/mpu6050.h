@@ -10,10 +10,7 @@
 
 
 #include "main.h"
-#include <stdint.h>
-//#include "i2c.h"
-#include "stm32f1xx_hal.h"
-#include "delay.h"
+
 
 extern float angle;
 extern float prev_gyro_z;

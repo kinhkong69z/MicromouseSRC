@@ -26,3 +26,22 @@ void mode() {
 	delay_ms(2000);
 	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
 }
+
+void mouse_move() {
+	switch (get(&mouse_state, mouse_state.index)) {
+	case 0:
+		Motor_stop();
+		break;
+	case 1:
+		Move_onecell();
+		break;
+	case 2:
+		Turn_left90();
+		break;
+	case 3:
+		Turn_right90();
+		break;
+	default:
+		break;
+	}
+}

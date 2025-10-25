@@ -5,6 +5,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Core/Src/Calculation.c \
 ../Core/Src/Encoder.c \
 ../Core/Src/Mode.c \
 ../Core/Src/Motor.c \
@@ -12,6 +13,7 @@ C_SRCS += \
 ../Core/Src/Sensor.c \
 ../Core/Src/delay.c \
 ../Core/Src/flash_store_data.c \
+../Core/Src/function_c.c \
 ../Core/Src/main.c \
 ../Core/Src/mpu6050.c \
 ../Core/Src/stm32f1xx_hal_msp.c \
@@ -22,6 +24,7 @@ C_SRCS += \
 ../Core/Src/wall.c 
 
 OBJS += \
+./Core/Src/Calculation.o \
 ./Core/Src/Encoder.o \
 ./Core/Src/Mode.o \
 ./Core/Src/Motor.o \
@@ -29,6 +32,7 @@ OBJS += \
 ./Core/Src/Sensor.o \
 ./Core/Src/delay.o \
 ./Core/Src/flash_store_data.o \
+./Core/Src/function_c.o \
 ./Core/Src/main.o \
 ./Core/Src/mpu6050.o \
 ./Core/Src/stm32f1xx_hal_msp.o \
@@ -39,6 +43,7 @@ OBJS += \
 ./Core/Src/wall.o 
 
 C_DEPS += \
+./Core/Src/Calculation.d \
 ./Core/Src/Encoder.d \
 ./Core/Src/Mode.d \
 ./Core/Src/Motor.d \
@@ -46,6 +51,7 @@ C_DEPS += \
 ./Core/Src/Sensor.d \
 ./Core/Src/delay.d \
 ./Core/Src/flash_store_data.d \
+./Core/Src/function_c.d \
 ./Core/Src/main.d \
 ./Core/Src/mpu6050.d \
 ./Core/Src/stm32f1xx_hal_msp.d \
@@ -63,7 +69,7 @@ Core/Src/%.o Core/Src/%.su Core/Src/%.cyclo: ../Core/Src/%.c Core/Src/subdir.mk
 clean: clean-Core-2f-Src
 
 clean-Core-2f-Src:
-	-$(RM) ./Core/Src/Encoder.cyclo ./Core/Src/Encoder.d ./Core/Src/Encoder.o ./Core/Src/Encoder.su ./Core/Src/Mode.cyclo ./Core/Src/Mode.d ./Core/Src/Mode.o ./Core/Src/Mode.su ./Core/Src/Motor.cyclo ./Core/Src/Motor.d ./Core/Src/Motor.o ./Core/Src/Motor.su ./Core/Src/PID.cyclo ./Core/Src/PID.d ./Core/Src/PID.o ./Core/Src/PID.su ./Core/Src/Sensor.cyclo ./Core/Src/Sensor.d ./Core/Src/Sensor.o ./Core/Src/Sensor.su ./Core/Src/delay.cyclo ./Core/Src/delay.d ./Core/Src/delay.o ./Core/Src/delay.su ./Core/Src/flash_store_data.cyclo ./Core/Src/flash_store_data.d ./Core/Src/flash_store_data.o ./Core/Src/flash_store_data.su ./Core/Src/main.cyclo ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/mpu6050.cyclo ./Core/Src/mpu6050.d ./Core/Src/mpu6050.o ./Core/Src/mpu6050.su ./Core/Src/stm32f1xx_hal_msp.cyclo ./Core/Src/stm32f1xx_hal_msp.d ./Core/Src/stm32f1xx_hal_msp.o ./Core/Src/stm32f1xx_hal_msp.su ./Core/Src/stm32f1xx_it.cyclo ./Core/Src/stm32f1xx_it.d ./Core/Src/stm32f1xx_it.o ./Core/Src/stm32f1xx_it.su ./Core/Src/syscalls.cyclo ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.cyclo ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32f1xx.cyclo ./Core/Src/system_stm32f1xx.d ./Core/Src/system_stm32f1xx.o ./Core/Src/system_stm32f1xx.su ./Core/Src/wall.cyclo ./Core/Src/wall.d ./Core/Src/wall.o ./Core/Src/wall.su
+	-$(RM) ./Core/Src/Calculation.cyclo ./Core/Src/Calculation.d ./Core/Src/Calculation.o ./Core/Src/Calculation.su ./Core/Src/Encoder.cyclo ./Core/Src/Encoder.d ./Core/Src/Encoder.o ./Core/Src/Encoder.su ./Core/Src/Mode.cyclo ./Core/Src/Mode.d ./Core/Src/Mode.o ./Core/Src/Mode.su ./Core/Src/Motor.cyclo ./Core/Src/Motor.d ./Core/Src/Motor.o ./Core/Src/Motor.su ./Core/Src/PID.cyclo ./Core/Src/PID.d ./Core/Src/PID.o ./Core/Src/PID.su ./Core/Src/Sensor.cyclo ./Core/Src/Sensor.d ./Core/Src/Sensor.o ./Core/Src/Sensor.su ./Core/Src/delay.cyclo ./Core/Src/delay.d ./Core/Src/delay.o ./Core/Src/delay.su ./Core/Src/flash_store_data.cyclo ./Core/Src/flash_store_data.d ./Core/Src/flash_store_data.o ./Core/Src/flash_store_data.su ./Core/Src/function_c.cyclo ./Core/Src/function_c.d ./Core/Src/function_c.o ./Core/Src/function_c.su ./Core/Src/main.cyclo ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/mpu6050.cyclo ./Core/Src/mpu6050.d ./Core/Src/mpu6050.o ./Core/Src/mpu6050.su ./Core/Src/stm32f1xx_hal_msp.cyclo ./Core/Src/stm32f1xx_hal_msp.d ./Core/Src/stm32f1xx_hal_msp.o ./Core/Src/stm32f1xx_hal_msp.su ./Core/Src/stm32f1xx_it.cyclo ./Core/Src/stm32f1xx_it.d ./Core/Src/stm32f1xx_it.o ./Core/Src/stm32f1xx_it.su ./Core/Src/syscalls.cyclo ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.cyclo ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32f1xx.cyclo ./Core/Src/system_stm32f1xx.d ./Core/Src/system_stm32f1xx.o ./Core/Src/system_stm32f1xx.su ./Core/Src/wall.cyclo ./Core/Src/wall.d ./Core/Src/wall.o ./Core/Src/wall.su
 
 .PHONY: clean-Core-2f-Src
 

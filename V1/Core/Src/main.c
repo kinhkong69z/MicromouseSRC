@@ -22,16 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "stdio.h"
-#include "Sensor.h"
-#include "Motor.h"
-#include <math.h>
-#include "delay.h"
-#include "Encoder.h"
-#include "PID.h"
-#include "mpu6050.h"
-#include "Mode.h"
-#include "flash_store_data.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -137,47 +128,16 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
 }
 
 void test2() {
-	Move_forward(182, 400);
-	delay_ms(400);
-	Turn_right90();
-	delay_ms(400);
-	Move_forward(36, 200);
-	delay_ms(400);
-	Turn_right90();
-	delay_ms(400);
-	Move_forward(18, 200);
-	delay_ms(400);
-	Turn_left90();
-	delay_ms(400);
-	Move_forward(18, 200);
-	delay_ms(400);
-	Turn_right90();
-	delay_ms(400);
-	Move_forward(16, 200);
-	delay_ms(400);
-	Turn_left90();
-	delay_ms(400);
-	Move_forward(36, 200);
-	delay_ms(400);
-	Turn_left90();
-	delay_ms(400);
-	Move_forward(20, 200);
-	delay_ms(400);
-	Turn_left90();
-	delay_ms(400);
-	Move_forward(20, 200);
-	delay_ms(400);
-	Turn_right90();
-	delay_ms(400);
-	Move_forward(20, 200);
-	delay_ms(400);
-	Turn_left90();
-	delay_ms(400);
-	Move_forward(20, 200);
-	delay_ms(400);
-	Turn_right90();
-	delay_ms(400);
-	Move_forward(20, 200);
+	pushBack(&mouse_state, 1);
+	pushBack(&mouse_state, 1);
+	pushBack(&mouse_state, 1);
+	pushBack(&mouse_state, 0);
+	cnt_cell = 4;
+	for(int i = 0; i < mouse_state.size; i++) {
+		mouse_move();
+		mouse_state.index++;
+	}
+	Motor_stop();
 }
 
 int _write(int fd, char *ptr, int len) {
@@ -193,8 +153,6 @@ int _write(int fd, char *ptr, int len) {
 	}
 	return -1;
 }
-
-char data[] = "HelloSon";
 
 /* USER CODE END 0 */
 
@@ -257,6 +215,8 @@ int main(void) {
 	IR_init(&hadc1);
 	ir_calibration();
 
+	initVector(&mouse_state, 1000);
+
 	while (MPU6050_Init(&hi2c2) == 1)
 		;
 	MPU6050_calibration(&hi2c2);
@@ -270,43 +230,17 @@ int main(void) {
 	}
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, SET);
 	delay_ms(1000);
-//	test2();
-//	Test();
-	Turn_left90();
-	delay_ms(10000);
-	Turn_right90();
-//	Move_forward(36, 100);
-//	Motor_stop();
+
+	test2();
 
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	uint32_t prev_time = micros();
-	int16_t speed = (150 * 815) / 108;
 	uint32_t curt = Millis;
+
 	while (1) {
-		MPU6050_getAngle(MPU6050.I2Cx, micros() - prev_time);
-//		if (fabs(90 + angle) > 4) {
-//
-//			int16_t pwm = PID_calc(&pid_turn_right, 90, -angle,
-//					micros() - prev_time);
-//			int32_t left_pwm = PID_calc(&pid_forward_left, pwm, speed_left,
-//					micros() - prev_time);
-//			int32_t right_pwm = PID_calc(&pid_forward_right, -pwm, speed_right,
-//					micros() - prev_time);
-//			prev_time = micros();
-//			debug_pwm = pwm;
-//
-//			Set_Motor_speed(&motor_left, left_pwm);
-//			Set_Motor_speed(&motor_right, right_pwm);
-//		} else {
-//			Motor_stop();
-//		}
-		prev_time = micros();
-		elapseMillis(10, curt);
-		curt = Millis;
-		printf("%f\n", angle);
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */

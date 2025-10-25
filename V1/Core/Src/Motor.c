@@ -10,7 +10,6 @@
 Motor motor_left;
 Motor motor_right;
 
-uint8_t mouse_state = 0;
 uint32_t prev_time_pid_forward = 0;
 uint32_t prev_time_pid_rotation = 0;
 int32_t debug_pwm = 0;
@@ -39,26 +38,6 @@ void Set_Motor_speed(Motor *motor, int16_t speed) {
 void Move_forward(float distance, float speed) { // distance in cm ,speed in mm/s
 //	int16_t count = 0;
 	reset_en();
-//	if(mouse_state == 1) {
-//		count = (COUNT90 + encoder_cnt_left) + (COUNT90 - encoder_cnt_right);
-//		reset_en();
-//		encoder_cnt_right += count;
-//	}
-//
-//	else if(mouse_state == 2) {
-//		count = (COUNT90 - encoder_cnt_left) + (COUNT90 + encoder_cnt_right);
-//		reset_en();
-//		encoder_cnt_left += count;
-//	}
-//	else {
-//		reset_en();
-//	}
-//	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, RESET);
-//	for(int i = 0; i < count; i ++ )
-//	{
-//		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-//		delay_ms(1000);
-//	}
 
 	speed = (speed * 815) / 108;
 	distance = (distance * 10) * 815 / 108;
@@ -108,7 +87,6 @@ void Move_forward(float distance, float speed) { // distance in cm ,speed in mm/
 		delay_ms(1);
 //		read_ir_adc();
 	}
-	mouse_state = 0;
 	Motor_stop();
 }
 
@@ -124,8 +102,8 @@ void Turn_left90() {
 		int16_t pwm_target = 25 * (80 - angle);
 		int16_t left_pwm = PID_calc(&pid_forward_left, -pwm_target, speed_left,
 				micros() - prev_time);
-		int16_t right_pwm = PID_calc(&pid_forward_right, pwm_target, speed_right,
-				micros() - prev_time);
+		int16_t right_pwm = PID_calc(&pid_forward_right, pwm_target,
+				speed_right, micros() - prev_time);
 		prev_time = micros();
 		Set_Motor_speed(&motor_left, left_pwm);
 		Set_Motor_speed(&motor_right, right_pwm);
@@ -136,7 +114,6 @@ void Turn_left90() {
 	printf("%f\n", angle);
 	Motor_stop();
 //	delay_ms(20);
-	mouse_state = 1;
 }
 
 void Turn_right90() {
@@ -154,8 +131,8 @@ void Turn_right90() {
 		int16_t pwm_target = 25 * (80 + angle);
 		int16_t left_pwm = PID_calc(&pid_forward_left, pwm_target, speed_left,
 				micros() - prev_time);
-		int16_t right_pwm = PID_calc(&pid_forward_right, -pwm_target, speed_right,
-				micros() - prev_time);
+		int16_t right_pwm = PID_calc(&pid_forward_right, -pwm_target,
+				speed_right, micros() - prev_time);
 		prev_time = micros();
 		Set_Motor_speed(&motor_left, left_pwm);
 		Set_Motor_speed(&motor_right, right_pwm);
@@ -166,7 +143,6 @@ void Turn_right90() {
 	Motor_stop();
 //	delay_ms(20);
 	printf("%f\n", angle);
-	mouse_state = 2;
 }
 
 void Motor_stop() {
@@ -180,4 +156,56 @@ void Adjuster() {
 	Set_Motor_speed(&motor_left, (WALL_FL - IR_FL) * 10); //set left motor speed
 	Set_Motor_speed(&motor_right, (WALL_FR - IR_FR) * 10); //set right motor speed
 	elapseMicros(1, curt); //elapse 1000 micro seconds
+}
+
+void Move_onecell() {
+	reset_en();
+	uint8_t state = check_state();
+	if (state == 2) {
+		PID_reset(&pid_steering);
+		PID_reset(&pid_wall_stable);
+		PID_reset(&pid_forward_right);
+		PID_reset(&pid_forward_left);
+	}
+	uint32_t prev_time = micros();
+	uint32_t distance = mm_to_cnt(onecell);
+	uint32_t curt = Millis;
+	int16_t right_pwm;
+	int16_t left_pwm;
+	while (((distance > encoder_cnt_left) || (distance > encoder_cnt_right))){
+//			&& ((IR_FL < WALL_FL) || (IR_FR < WALL_FR))) {
+		update_speed(micros() - prev_time, state);
+		left_pwm = PID_calc(&pid_forward_left, mm_to_cnt(_SPEED), speed_left,
+				micros() - prev_time);
+//		debug_pid ++;
+		right_pwm = PID_calc(&pid_forward_right, mm_to_cnt(_SPEED), speed_right,
+				micros() - prev_time);
+		int16_t error_steering = PID_calc(&pid_steering, 0,
+				encoder_cnt_left - encoder_cnt_right, micros() - prev_time);
+		int16_t error_wall = PID_calc(&pid_wall_stable, 0, wall_calibration(),
+				micros() - prev_time);
+		prev_time = micros();
+//		debug_pid = error_wall;
+		error_wall = 0;
+		debug_pwm = left_pwm;
+		left_pwm += error_steering + error_wall;
+		right_pwm += -error_steering - error_wall;
+
+		if (left_pwm > 10000)
+			left_pwm = 10000;
+		if (left_pwm < 0)
+			left_pwm = 0;
+		if (right_pwm > 10000)
+			right_pwm = 10000;
+		if (right_pwm < 0)
+			right_pwm = 0;
+
+		Set_Motor_speed(&motor_left, left_pwm);
+		Set_Motor_speed(&motor_right, right_pwm);
+
+//		elapseMillis(2, curt);
+//		curt = Millis;
+		delay_ms(1);
+//		read_ir_adc();
+	}
 }

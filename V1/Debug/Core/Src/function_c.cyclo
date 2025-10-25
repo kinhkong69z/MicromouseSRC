@@ -1,0 +1,5 @@
+../Core/Src/function_c.c:12:6:initVector	1
+../Core/Src/function_c.c:19:6:resizeVector	1
+../Core/Src/function_c.c:24:6:pushBack	2
+../Core/Src/function_c.c:31:5:get	1
+../Core/Src/function_c.c:38:6:freeVector	1

@@ -9,15 +9,8 @@
 #define INC_MOTOR_H_
 
 #include "main.h"
-#include "stm32f1xx_hal.h"
-#include "stm32f1xx_it.h"
-#include "Sensor.h"
-#include "PID.h"
-#include "delay.h"
-#include "Encoder.h"
-#include "mpu6050.h"
 
-extern uint8_t mouse_state;
+
 extern uint32_t prev_time_pid_forward;
 extern uint32_t prev_time_pid_rotation;
 extern int32_t debug_pwm;
@@ -38,6 +31,7 @@ void Turn_left90();
 void Turn_right90();
 void Motor_stop();
 void Adjuster();
+void Move_onecell();
 
 extern Motor motor_left;
 extern Motor motor_right;

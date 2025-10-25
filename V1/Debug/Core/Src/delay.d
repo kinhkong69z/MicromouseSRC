@@ -28,8 +28,10 @@ Core/Src/delay.o: ../Core/Src/delay.c ../Core/Inc/delay.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  ../Core/Inc/stm32f1xx_it.h ../Core/Inc/Sensor.h ../Core/Inc/main.h \
- ../Core/Inc/PID.h ../Core/Inc/Motor.h ../Core/Inc/delay.h \
- ../Core/Inc/Encoder.h ../Core/Inc/mpu6050.h
+ ../Core/Inc/Encoder.h ../Core/Inc/function_c.h ../Core/Inc/Mode.h \
+ ../Core/Inc/Motor.h ../Core/Inc/delay.h ../Core/Inc/mpu6050.h \
+ ../Core/Inc/PID.h ../Core/Inc/wall.h ../Core/Inc/flash_store_data.h \
+ ../Core/Inc/Calculation.h
 ../Core/Inc/delay.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:
@@ -62,8 +64,13 @@ Core/Src/delay.o: ../Core/Src/delay.c ../Core/Inc/delay.h \
 ../Core/Inc/stm32f1xx_it.h:
 ../Core/Inc/Sensor.h:
 ../Core/Inc/main.h:
-../Core/Inc/PID.h:
+../Core/Inc/Encoder.h:
+../Core/Inc/function_c.h:
+../Core/Inc/Mode.h:
 ../Core/Inc/Motor.h:
 ../Core/Inc/delay.h:
-../Core/Inc/Encoder.h:
 ../Core/Inc/mpu6050.h:
+../Core/Inc/PID.h:
+../Core/Inc/wall.h:
+../Core/Inc/flash_store_data.h:
+../Core/Inc/Calculation.h:

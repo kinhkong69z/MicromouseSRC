@@ -28,8 +28,10 @@ Core/Src/Mode.o: ../Core/Src/Mode.c ../Core/Inc/Mode.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
- ../Core/Inc/stm32f1xx_it.h ../Core/Inc/PID.h ../Core/Inc/Sensor.h \
- ../Core/Inc/delay.h ../Core/Inc/Motor.h ../Core/Inc/mpu6050.h
+ ../Core/Inc/stm32f1xx_it.h ../Core/Inc/function_c.h ../Core/Inc/Mode.h \
+ ../Core/Inc/Motor.h ../Core/Inc/mpu6050.h ../Core/Inc/Sensor.h \
+ ../Core/Inc/PID.h ../Core/Inc/wall.h ../Core/Inc/flash_store_data.h \
+ ../Core/Inc/delay.h ../Core/Inc/Calculation.h
 ../Core/Inc/Mode.h:
 ../Core/Inc/Encoder.h:
 ../Core/Inc/main.h:
@@ -62,8 +64,13 @@ Core/Src/Mode.o: ../Core/Src/Mode.c ../Core/Inc/Mode.h \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
 ../Core/Inc/stm32f1xx_it.h:
-../Core/Inc/PID.h:
-../Core/Inc/Sensor.h:
-../Core/Inc/delay.h:
+../Core/Inc/function_c.h:
+../Core/Inc/Mode.h:
 ../Core/Inc/Motor.h:
 ../Core/Inc/mpu6050.h:
+../Core/Inc/Sensor.h:
+../Core/Inc/PID.h:
+../Core/Inc/wall.h:
+../Core/Inc/flash_store_data.h:
+../Core/Inc/delay.h:
+../Core/Inc/Calculation.h:

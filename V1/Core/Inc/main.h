@@ -27,7 +27,22 @@ extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
+#include  <math.h>
 #include "stm32f1xx_hal.h"
+#include "Encoder.h"
+#include "stdio.h"
+#include <stdlib.h>
+#include "stm32f1xx_it.h"
+#include "function_c.h"
+#include "Mode.h"
+#include "Motor.h"
+#include "mpu6050.h"
+#include "Sensor.h"
+#include "PID.h"
+#include "wall.h"
+#include "flash_store_data.h"
+#include "delay.h"
+#include "Calculation.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -36,7 +51,6 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
-
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/

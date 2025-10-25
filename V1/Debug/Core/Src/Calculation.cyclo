@@ -1,0 +1,5 @@
+../Core/Src/Calculation.c:17:6:update_speed	5
+../Core/Src/Calculation.c:47:7:mm_to_cnt	1
+../Core/Src/Calculation.c:30:9:check_state	3
+../Core/Src/Calculation.c:42:7:cnt_to_omega	1
+../Core/Src/Calculation.c:51:7:cnt_to_mm	1
